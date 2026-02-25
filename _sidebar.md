@@ -1,4 +1,3 @@
-- 首页
-- 文档列表
-  - [aSeeStudio操作手册](docs/aSeeStudio操作手册.md)
-  - [UserSDK](docs/UserSDK.md)
+- [首页](README.md)
+- [aSeeStudio操作手册](docs/aSeeStudio操作手册.md)
+- [UserSDK](docs/UserSDK.md)
