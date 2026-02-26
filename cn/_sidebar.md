@@ -1,3 +1,3 @@
-- [首页](README.md)
-- [aSeeStudio操作手册](cn/aSeeStudio操作手册.md)
-- [UserSDK](cn/UserSDK.md)
+- [首页](cn/README.md)
+- [aSeeStudio操作手册](docs/aSeeStudio操作手册.md)
+- [UserSDK](docs/UserSDK.md)
