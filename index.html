@@ -49,112 +49,25 @@
   <!-- 右侧TOC导航样式 -->
   <link rel="stylesheet" href="https://unpkg.com/docsify-plugin-toc@1.3.1/dist/light.css">
 </head>
-  <script src="https://lf-cdn.coze.cn/obj/unpkg/flow-platform/chat-app-sdk/1.2.0-beta.20/libs/cn/index.js"></script>
 
-  <script>
-    function getUniqueUserId() {
-      // 先检查本地存储是否已有用户ID，有则直接用（保证同浏览器会话一致）
-      let userId = localStorage.getItem('coze_unique_user_id');
-      if (!userId) {
-        // 无则生成随机唯一ID（时间戳+随机数，避免重复）
-        userId = 'user_' + Date.now() + '_' + Math.floor(Math.random() * 1000000);
-        // 存入本地存储，同浏览器下次访问仍用该ID
-        localStorage.setItem('coze_unique_user_id', userId);
+<script src="https://lf-cdn.coze.cn/obj/unpkg/flow-platform/chat-app-sdk/1.2.0-beta.19/libs/cn/index.js"></script>
+<script>
+  new CozeWebSDK.WebChatClient({
+    config: {
+      bot_id: '7610982311530004543',
+    },
+    componentProps: {
+      title: 'AI智能客服',
+    },
+    auth: {
+      type: 'token',
+      token: 'pat_Hxjq7y1Z9mXkjk0kD9RqqOhR6U7MU4Y2Fu3iFKzhEQyV4YkaV2TRkJhfPVL9xK7a',
+      onRefreshToken: function () {
+        return 'pat_Hxjq7y1Z9mXkjk0kD9RqqOhR6U7MU4Y2Fu3iFKzhEQyV4YkaV2TRkJhfPVL9xK7a'
       }
-      return userId;
     }
-
-    new CozeWebSDK.WebChatClient({
-  /**
-  * Agent or app settings
-  * for agent
-  * @param config.bot_id - Agent ID.
-  * for app
-  * @param config.type - To integrate a Coze app, you must set the value to app.
-  * @param config.isIframe - Whether to use the iframe method to open the chat box
-  * @param config.appInfo.appId - AI app ID.
-  * @param config.appInfo.workflowId - Workflow or chatflow ID.
-  */
-  config: {
-    type: 'bot',
-    bot_id: '7610982311530004543',
-    isIframe: true,
-  },
-  /**
-  * The auth property is used to configure the authentication method.
-  * @param type - Authentication method, default type is 'unauth', which means no authentication is required; it is recommended to set it to 'token', which means authentication is done through PAT (Personal Access Token) or OAuth.
-  * @param token - When the type is set to 'token', you need to configure the PAT (Personal Access Token) or OAuth access key.
-  * @param onRefreshToken - When the access key expires, a new key can be set as needed.
-  */
-  auth: {
-    type: 'token',
-    token: 'cztei_h7slNcwPgK0M8NTrQbMuvccbI3DkWkm3huANB11yRIY6cqAuX52cVCdooeldPDNz9',
-    onRefreshToken: async () => 'token'
-  },
-  /**
-  * The userInfo parameter is used to set the display of agent user information in the chat box.
-  * @param userInfo.id - ID of the agent user.
-  * @param userInfo.url - URL address of the user's avatar.
-  * @param userInfo.nickname - Nickname of the agent user.
-  */
-  userInfo: {
-    id: getUniqueUserId(),
-    url: 'https://lf-coze-web-cdn.coze.cn/obj/eden-cn/lm-lgvj/ljhwZthlaukjlkulzlp/coze/coze-logo.png',
-    nickname: 'User',
-  },
-  ui: {
-    /**
-    * The ui.base parameter is used to add the overall UI effect of the chat window.
-    * @param base.icon - Application icon URL.
-    * @param base.layout - Layout style of the agent chat box window, which can be set as 'pc' or'mobile'.
-    * @param base.lang - System language of the agent, which can be set as 'en' or 'zh-CN'.
-    * @param base.zIndex - The z-index of the chat box.
-    */
-    base: {
-      icon: 'https://lf-coze-web-cdn.coze.cn/obj/eden-cn/lm-lgvj/ljhwZthlaukjlkulzlp/coze/chatsdk-logo.png',
-      layout: 'pc',
-      lang: 'en',
-      zIndex: 1000
-    },
-    /**
-    * Controls whether to display the top title bar and the close button
-    * @param header.isShow - Whether to display the top title bar.
-    * @param header.isNeedClose - Whether to display the close button.
-    */
-    header: {
-      isShow: true,
-      isNeedClose: true,
-    },
-    /**
-    * Controls whether to display the floating ball at the bottom right corner of the page.
-    */
-    asstBtn: {
-      isNeed: true
-    },
-    /**
-    * The ui.footer parameter is used to add the footer of the chat window.
-    * @param footer.isShow - Whether to display the bottom copy module.
-    * @param footer.expressionText - The text information displayed at the bottom.
-    * @param footer.linkvars - The link copy and link address in the footer.
-    */
-    footer: {
-      isShow: true,
-      expressionText: 'Powered by 7invensun',
-    },
-    /**
-    * Control the UI and basic capabilities of the chat box.
-    * @param chatBot.title - The title of the chatbox
-    * @param chatBot.uploadable - Whether file uploading is supported.
-    * @param chatBot.width - The width of the agent window on PC is measured in px, default is 460.
-    * @param chatBot.el - Container for setting the placement of the chat box (Element).
-    */
-    chatBot: {
-      title: 'Coze Bot',
-      uploadable: true,
-      width: 390,
-    },
-  },
-});
-  </script>
+  });
+</script>
+ 
 </body>
 </html>
