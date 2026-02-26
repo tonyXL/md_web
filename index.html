@@ -20,7 +20,20 @@
         '/cn/': '#/cn/',
         '/': '#/cn/'
       },
-      repo: 'https://github.com/tonyXL/md_web', // 你的GitHub仓库地址
+      alias: {
+        // 避免在子目录中查找 navbar 和 sidebar 导致的 404
+        '/en/.*/_navbar.md': '/en/_navbar.md',
+        '/cn/.*/_navbar.md': '/cn/_navbar.md',
+        '/en/.*/_sidebar.md': '/en/_sidebar.md',
+        '/cn/.*/_sidebar.md': '/cn/_sidebar.md',
+        // 兼容旧的 /docs/ 路径
+        '/docs/(.*)': '/cn/docs/$1',
+        // 默认回退
+        '/.*/_navbar.md': '/cn/_navbar.md',
+        '/.*/_sidebar.md': '/cn/_sidebar.md'
+      },
+      logo: 'res/logo.ico', // 侧边栏Logo
+      // repo: 'https://github.com/tonyXL/md_web', // 你的GitHub仓库地址
       loadSidebar: true, // 启用侧边栏
       loadNavbar: true, // 启用导航栏
       subMaxLevel: 2, // 生成目录的最大层级
